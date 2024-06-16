@@ -1,0 +1,28 @@
+<h1>Hello</h1>
+<div class="container">
+  <h1>Todo List</h1>
+  <form (submit)="addTodo(newTodoTitle.value); newTodoTitle.value = ''">
+    <input
+      #newTodoTitle
+      type="text"
+      placeholder="Add new todo"
+      class="form-control"
+    />
+  </form>
+  <ul class="list-group">
+    <li *ngFor="let todo of todos" class="list-group-item">
+      <input
+        type="checkbox"
+        [checked]="todo.completed"
+        (change)="updateTodo(todo)"
+      />
+      {{ todo.title }}
+      <button
+        class="btn btn-danger btn-sm float-right"
+        (click)="deleteTodo(todo._id)"
+      >
+        Delete
+      </button>
+    </li>
+  </ul>
+</div>
